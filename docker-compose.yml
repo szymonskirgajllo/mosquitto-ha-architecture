@@ -1,0 +1,35 @@
+version: '3'
+services:
+        mosquitto0:
+                image: eclipse-mosquitto
+                ports:
+                        - "1883:1883"
+                networks:
+                        - mosquitto-instances
+                        - mosquitto-bridges
+        mosquitto1:
+                image: eclipse-mosquitto
+                ports:
+                        - "1884:1883"
+                networks:
+                        - mosquitto-instances
+                        - mosquitto-bridges
+        mosquitto-bridge0:
+                image: eclipse-mosquitto
+                ports:
+                        - "1885:1883"
+                networks:
+                        - mosquitto-instances
+                        - mosquitto-bridges
+        mosquitto-bridge1:
+                image: eclipse-mosquitto
+                ports:
+                        - "1886:1883"
+                networks:
+                        - mosquitto-instances
+                        - mosquitto-bridges
+        haproxy:
+                image: haproxy
+networks:
+        mosquitto-instances:
+        mosquitto-bridges:
